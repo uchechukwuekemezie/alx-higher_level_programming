@@ -1,0 +1,22 @@
+#!/usr/bin/node
+function findSecondBiggestInteger(...args) {
+  if (args.length <= 1) {
+    console.log(0);
+    return;
+  }
+
+  let biggest = Number.MIN_SAFE_INTEGER;
+  let secondBiggest = Number.MIN_SAFE_INTEGER;
+
+  for (let i = 0; i < args.length; i++) {
+    const num = parseInt(args[i]);
+    if (num > biggest) {
+      secondBiggest = biggest;
+      biggest = num;
+    } else if (num > secondBiggest && num !== biggest) {
+      secondBiggest = num;
+    }
+  }
+
+  console.log(secondBiggest === Number.MIN_SAFE_INTEGER ? 0 : secondBiggest);
+}
